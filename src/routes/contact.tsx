@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
+import { Reveal } from "@/components/Reveal";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -19,7 +20,7 @@ function Contact() {
     <div className="min-h-screen bg-background">
       <SiteHeader />
       <section className="mx-auto grid max-w-5xl gap-16 px-6 py-20 md:grid-cols-2 md:py-28">
-        <div>
+        <Reveal>
           <p className="text-sm uppercase tracking-[0.25em] text-accent">Say hello</p>
           <h1 className="mt-3 font-display text-5xl text-foreground md:text-6xl">Custom orders & events.</h1>
           <p className="mt-6 text-muted-foreground">
