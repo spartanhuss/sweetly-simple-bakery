@@ -41,26 +41,28 @@ function Contact() {
             </div>
           </dl>
         </Reveal>
-        <form
-          onSubmit={(e) => { e.preventDefault(); alert("Thanks — we'll be in touch within a day."); }}
-          className="space-y-5 rounded-2xl bg-card p-8 shadow-[var(--shadow-soft)]"
-        >
-          <div>
-            <label htmlFor="name" className="mb-2 block text-sm font-medium text-foreground">Name</label>
-            <input id="name" required className="w-full rounded-lg border border-input bg-background px-4 py-3 text-sm outline-none focus:border-accent" />
-          </div>
-          <div>
-            <label htmlFor="email" className="mb-2 block text-sm font-medium text-foreground">Email</label>
-            <input id="email" type="email" required className="w-full rounded-lg border border-input bg-background px-4 py-3 text-sm outline-none focus:border-accent" />
-          </div>
-          <div>
-            <label htmlFor="msg" className="mb-2 block text-sm font-medium text-foreground">What can we make for you?</label>
-            <textarea id="msg" rows={5} required className="w-full rounded-lg border border-input bg-background px-4 py-3 text-sm outline-none focus:border-accent" />
-          </div>
-          <button type="submit" className="w-full rounded-full bg-primary py-3 text-sm font-medium text-primary-foreground transition-all hover:opacity-90">
-            Send message
-          </button>
-        </form>
+        <Reveal delay={0.1}>
+          <form
+            onSubmit={(e) => { e.preventDefault(); alert("Thanks — we'll be in touch within a day."); }}
+            className="space-y-5 rounded-2xl bg-card p-8 shadow-[var(--shadow-soft)]"
+          >
+            <div>
+              <label htmlFor="name" className="mb-2 block text-sm font-medium text-foreground">Name</label>
+              <input id="name" required className="w-full rounded-lg border border-input bg-background px-4 py-3 text-sm outline-none focus:border-accent" />
+            </div>
+            <div>
+              <label htmlFor="email" className="mb-2 block text-sm font-medium text-foreground">Email</label>
+              <input id="email" type="email" required className="w-full rounded-lg border border-input bg-background px-4 py-3 text-sm outline-none focus:border-accent" />
+            </div>
+            <div>
+              <label htmlFor="msg" className="mb-2 block text-sm font-medium text-foreground">What can we make for you?</label>
+              <textarea id="msg" rows={5} required className="w-full rounded-lg border border-input bg-background px-4 py-3 text-sm outline-none focus:border-accent" />
+            </div>
+            <button type="submit" className="w-full rounded-full bg-primary py-3 text-sm font-medium text-primary-foreground transition-all hover:opacity-90">
+              Send message
+            </button>
+          </form>
+        </Reveal>
       </section>
       <SiteFooter />
     </div>
