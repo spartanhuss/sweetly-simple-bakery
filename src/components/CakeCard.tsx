@@ -1,7 +1,16 @@
 import type { Cake } from "@/data/cakes";
 import { motion } from "framer-motion";
+import { useCart } from "@/lib/cart";
+import { toast } from "sonner";
 
 export function CakeCard({ cake }: { cake: Cake }) {
+  const { addItem, openCart } = useCart();
+  const handleAdd = () => {
+    addItem(cake, 1);
+    toast.success(`${cake.name} added to your box`, {
+      action: { label: "View cart", onClick: openCart },
+    });
+  };
   return (
     <motion.article
       variants={{
@@ -36,7 +45,10 @@ export function CakeCard({ cake }: { cake: Cake }) {
           <span className="font-display text-xl text-accent">${cake.price}</span>
         </div>
         <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{cake.description}</p>
-        <button className="mt-4 self-start rounded-full border border-foreground/20 px-5 py-2 text-sm font-medium text-foreground transition-all hover:border-foreground hover:bg-foreground hover:text-background">
+        <button
+          onClick={handleAdd}
+          className="mt-4 self-start rounded-full border border-foreground/20 px-5 py-2 text-sm font-medium text-foreground transition-all hover:border-foreground hover:bg-foreground hover:text-background"
+        >
           Add to box
         </button>
       </div>

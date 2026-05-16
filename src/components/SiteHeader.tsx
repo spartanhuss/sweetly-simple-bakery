@@ -1,6 +1,9 @@
 import { Link } from "@tanstack/react-router";
+import { ShoppingBag } from "lucide-react";
+import { useCart } from "@/lib/cart";
 
 export function SiteHeader() {
+  const { count, openCart } = useCart();
   return (
     <header className="sticky top-0 z-40 w-full border-b border-border/60 bg-background/80 backdrop-blur-md">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
@@ -15,12 +18,19 @@ export function SiteHeader() {
           <Link to="/about" activeProps={{ className: "text-accent" }} className="text-muted-foreground transition-colors hover:text-foreground">About</Link>
           <Link to="/contact" activeProps={{ className: "text-accent" }} className="text-muted-foreground transition-colors hover:text-foreground">Contact</Link>
         </nav>
-        <Link
-          to="/menu"
-          className="rounded-full bg-primary px-5 py-2 text-sm font-medium text-primary-foreground transition-all hover:opacity-90"
+        <button
+          onClick={openCart}
+          className="relative inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2 text-sm font-medium text-primary-foreground transition-all hover:opacity-90"
+          aria-label={`Open cart (${count} items)`}
         >
-          Order
-        </Link>
+          <ShoppingBag className="h-4 w-4" />
+          <span>Cart</span>
+          {count > 0 && (
+            <span className="ml-1 inline-flex h-5 min-w-5 items-center justify-center rounded-full bg-accent px-1.5 text-xs font-semibold text-accent-foreground">
+              {count}
+            </span>
+          )}
+        </button>
       </div>
     </header>
   );
