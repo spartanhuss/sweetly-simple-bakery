@@ -21,10 +21,21 @@ export const Route = createFileRoute("/")({
 });
 
 function Home() {
+  const location = useLocation();
   const heroRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
   const heroY = useTransform(scrollYProgress, [0, 1], [0, 80]);
   const heroScale = useTransform(scrollYProgress, [0, 1], [1, 1.08]);
+
+  useEffect(() => {
+    if (location.hash) {
+      const id = location.hash.replace("#", "");
+      const el = document.getElementById(id);
+      if (el) {
+        setTimeout(() => el.scrollIntoView({ behavior: "smooth" }), 100);
+      }
+    }
+  }, [location.hash]);
 
   return (
     <div className="min-h-screen bg-background">
