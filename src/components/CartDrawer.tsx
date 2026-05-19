@@ -40,7 +40,8 @@ export function CartDrawer() {
                   <p className="font-display text-2xl text-foreground">Your box is empty.</p>
                   <p className="mt-2 text-sm text-muted-foreground">Add a slow-set cake to get started.</p>
                   <Link
-                    to="/menu"
+                    to="/"
+                    hash="menu"
                     onClick={closeCart}
                     className="mt-6 rounded-full bg-primary px-6 py-2 text-sm font-medium text-primary-foreground hover:opacity-90"
                   >
